@@ -5,10 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "<html><h3>Flaskでファイルダウンロードを実装する</h3><a href='/export'>csvダウンロード</a>"
-
-
-</html >'
+    return "<html><h3>Flaskでファイルダウンロードを実装する</h3><a href='/export'>csvダウンロード</a></html>"
 
 
 @app.route("/export")
