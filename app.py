@@ -1,22 +1,23 @@
-from flask import Flask, render_template, request, redirect, session, url_for
-from flask import jsonify, send_from_directory
-
+from flask import Flask, render_template, send_from_directory
+import os
 app = Flask(__name__)
 
-@app.route("/")
-def indec():
-    render_template('index.html')
 
-@app.route('/csv_export')
-def export_template():
-    render_template('export.html')
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route("/export_action/<file_name>")
-def export_action(file_name):
+
+@app.route("/export")
+def export_action():
+    # 現在のディレクトリを取得
+    path = os.path.abspath(__file__)[:-7]
     return send_from_directory(
-        directory='/export_tmp',
-        filename=file_name,
+        directory=path + '\export_temp',
+        filename='test.csv',
         as_attachment=True,
-        attachment_filename=file_name,
-        mimetype='XLSX_MIMETYPE')
-    
+        attachment_filename='test.csv',
+        )
+
+
+app.run(debug=True)
