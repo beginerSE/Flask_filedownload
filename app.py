@@ -5,7 +5,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return "<html><h3>Flaskでファイルダウンロードを実装する</h3><a href='/export'>csvダウンロード</a>"
+
+
+</html >'
 
 
 @app.route("/export")
@@ -17,7 +20,7 @@ def export_action():
         filename='test.csv',
         as_attachment=True,
         attachment_filename='test.csv',
-        )
+    )
 
 
 app.run(debug=True)
